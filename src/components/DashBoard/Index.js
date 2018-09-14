@@ -15,7 +15,7 @@ import { FormLabel,
    Avatar,
    Input,
    } from 'react-native-elements';
-import {
+import { 
   Platform,
   StyleSheet,
   Text,
