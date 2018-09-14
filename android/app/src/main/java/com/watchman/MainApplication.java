@@ -13,6 +13,7 @@ import com.reactnativenavigation.NavigationApplication;
 
 import java.util.Arrays;
 import java.util.List;
+import com.wix.RNCameraKit.RNCameraKitPackage;
 
 public class MainApplication extends NavigationApplication {
 
@@ -25,8 +26,10 @@ public class MainApplication extends NavigationApplication {
   protected List<ReactPackage> getPackages() {
       // Add additional packages you require here
       // No need to add RnnPackage and MainReactPackage
+      
       return Arrays.<ReactPackage>asList(
           // eg. new VectorIconsPackage()
+          new RNCameraKitPackage()
       );
   }
 

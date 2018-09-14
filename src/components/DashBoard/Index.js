@@ -24,10 +24,10 @@ import {
   TouchableOpacity,
   TextInput,
   
-  
-  
 }
+
   from 'react-native';
+  import {CameraKitCamera} from 'react-native-camera-kit';
 
   
 
@@ -58,7 +58,13 @@ class Dashboard extends Component {
         result:4 
       })
     }
+    takepic=async function () {
     
+         const image = await this.camera.capture(true);
+        // alert(image.uri);
+       alert("haiii");
+
+    }
     
   render() {
     return (
@@ -155,10 +161,34 @@ class Dashboard extends Component {
             </View>
             </View>
             <View style={styles.rformstyle}>
+            < CameraKitCamera
+            ref = {
+              cam => this.camera = cam
+            }
+            style = {
+              {
+                flex: 1,
+                backgroundColor: 'white'
+              }
+            }
+            cameraOptions = {
+              {
+                flashMode: 'auto', // on/off/auto(default)
+                focusMode: 'on', // off/on(default)
+                zoomMode: 'on', // off/on(default)
+                ratioOverlay: '1:1', // optional, ratio overlay on the camera and crop the image seamlessly
+                ratioOverlayColor: '#00000077' // optional
+              }
+            }
+            onReadQRCode = {
+              (event) => console.log(event.nativeEvent.qrcodeStringValue)
+            } // optional
             
-            <TouchableOpacity onPress={() => { alert("you clicked me") }}>
-              <Image source={require("../../../assets/camera.png")} style={styles.cameraimg} />
-            </TouchableOpacity></View>
+            />
+            <TouchableOpacity onPress={this.takepic}>
+            <Image source={require("../../../assets/camera.png")} style={styles.cameraimg} />
+          </TouchableOpacity>
+           </View>
           </View>
 }
 {this.state.result===2&&
